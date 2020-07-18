@@ -1,9 +1,11 @@
 package ru.job4j.accident.control;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import ru.job4j.accident.repository.AccidentMem;
 
 import java.util.List;
 
@@ -15,22 +17,13 @@ import java.util.List;
  */
 @Controller
 public class IndexControl {
+
+    @Autowired
+    AccidentMem accidentMem;
+
     @GetMapping("/")
     public String index(Model model) {
-        List<String> list = List.of(
-                "Beatles",
-                "Rolling Stones",
-                "Doors",
-                "Who",
-                "Kinks",
-                "Cream",
-                "Yardbirds",
-                "Hollies",
-                "Animals",
-                "Ventures"
-        );
-
-        model.addAttribute("rockBands60", list);
+        model.addAttribute("accidents", accidentMem.getAccidents());
         return "index";
     }
 }

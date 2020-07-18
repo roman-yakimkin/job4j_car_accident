@@ -15,16 +15,25 @@
     <title>Accident</title>
 </head>
 <body>
-    <table class="table table-bordered">
-        <tbody>
-            <c:forEach items="${rockBands60}" var="band">
+<div class="container">
+    <div class="row pt-3">
+        <table class="table table-bordered">
+            <thead>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Address</th>
+            </thead>
+            <tbody>
+            <c:forEach items="${accidents}" var="accident">
                 <tr>
-                    <td>
-                        <c:out value="${band}" />
-                    </td>
+                    <td><c:out value="${accident.name}" /></td>
+                    <td><c:out value="${accident.text}" /></td>
+                    <td><c:out value="${accident.address}" /></td>
                 </tr>
             </c:forEach>
-        </tbody>
-    </table>
+            </tbody>
+        </table>
+    </div>
+</div>
 </body>
 </html>
