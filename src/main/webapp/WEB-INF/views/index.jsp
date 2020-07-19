@@ -24,11 +24,11 @@
                 <th>Address</th>
             </thead>
             <tbody>
-            <c:forEach items="${accidents}" var="accident">
+            <c:forEach items="${accidents}" var="item">
                 <tr>
-                    <td><c:out value="${accident.name}" /></td>
-                    <td><c:out value="${accident.text}" /></td>
-                    <td><c:out value="${accident.address}" /></td>
+                    <td><c:out value="${item.value.name}" /></td>
+                    <td><c:out value="${item.value.text}" /></td>
+                    <td><c:out value="${item.value.address}" /></td>
                 </tr>
             </c:forEach>
             </tbody>
