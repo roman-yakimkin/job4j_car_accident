@@ -16,17 +16,31 @@ import java.util.Map;
 @Repository
 public class AccidentMem {
     private Map<Integer, Accident> accidents = new HashMap<>();
+    private int id = 5;
 
     public AccidentMem() {
-        accidents = Map.of(
-                1, new Accident(1, "Accident 1", "Description of Accident 1", "Address 1"),
-                2, new Accident(2, "Accident 2", "Description of Accident 2", "Address 2"),
-                3, new Accident(3, "Accident 3", "Description of Accident 3", "Address 3"),
-                4, new Accident(4, "Accident 4", "Description of Accident 4", "Address 4")
-        );
+        accidents.put(1, new Accident(1, "Accident 1", "Description of Accident 1", "Address 1"));
+        accidents.put(2, new Accident(2, "Accident 2", "Description of Accident 2", "Address 2"));
+        accidents.put(3, new Accident(3, "Accident 3", "Description of Accident 3", "Address 3"));
+        accidents.put(4, new Accident(4, "Accident 4", "Description of Accident 4", "Address 4"));
+    }
+
+    public void create(Accident accident) {
+        if (accident.getId() == 0){
+            accident.setId(newId());
+        }
+        accidents.put(accident.getId(), accident);
+    }
+
+    public int newId(){
+        return id++;
     }
 
     public Map<Integer, Accident> getAccidents() {
         return accidents;
+    }
+
+    public Accident getAccident(int id) {
+        return accidents.get(id);
     }
 }

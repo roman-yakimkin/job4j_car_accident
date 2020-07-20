@@ -9,10 +9,10 @@ import java.util.Objects;
  * @version 1.0
  */
 public class Accident {
-    private final int id;
-    private final String name;
-    private final String text;
-    private final String address;
+    private int id = 0;
+    private String name;
+    private String text;
+    private String address;
 
     public Accident(int id, String name, String text, String address) {
         this.id = id;
@@ -25,16 +25,32 @@ public class Accident {
         return id;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getText() {
         return text;
     }
 
+    public void setText(String text) {
+        this.text = text;
+    }
+
     public String getAddress() {
         return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     @Override

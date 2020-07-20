@@ -12,32 +12,31 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <title>Accident</title>
+    <title>Edit accident</title>
 </head>
 <body>
-<div class="container">
-    <div class="row pt-3">
-        <a href="<c:url value='/create'/>">Add an accident</a>
-    </div>
-    <div class="row pt-3">
-        <table class="table table-bordered">
-            <thead>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Address</th>
-                <th>Actions</th>
-            </thead>
-            <tbody>
-            <c:forEach items="${accidents}" var="item">
+<div class="container pt-3">
+    <div class="row">
+        <form action="<c:url value='/save' />" method='POST' style="width: 100%">
+            <input type="hidden" name="id" value="<c:out value="${item.id}" />" />
+            <table class="table table-bordered">
                 <tr>
-                    <td><c:out value="${item.value.name}" /></td>
-                    <td><c:out value="${item.value.text}" /></td>
-                    <td><c:out value="${item.value.address}" /></td>
-                    <td><a href="<c:url value="/${item.value.id}/edit" />">edit</a></td>
+                    <td>Name:</td>
+                    <td><input type='text' name='name' class="form-control" value="<c:out value="${item.name}" />"></td>
                 </tr>
-            </c:forEach>
-            </tbody>
-        </table>
+                <tr>
+                    <td>Description:</td>
+                    <td><textarea name="text" class="form-control"><c:out value="${item.text}" /></textarea></td>
+                </tr>
+                <tr>
+                    <td>Address:</td>
+                    <td><input type='text' name='address' class="form-control" value="<c:out value="${item.address}" />"></td>
+                </tr>
+                <tr>
+                    <td colspan='2'><input name="submit" type="submit" value="Save" class="btn btn-success"/></td>
+                </tr>
+            </table>
+        </form>
     </div>
 </div>
 </body>
