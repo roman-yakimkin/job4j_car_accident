@@ -17,7 +17,7 @@
 <body>
 <div class="container">
     <div class="row pt-3">
-        <a href="<c:url value='/create'/>">Add an accident</a>
+        <a href="<c:url value='/item/create'/>">Add an accident</a>
     </div>
     <div class="row pt-3">
         <table class="table table-bordered">
@@ -33,7 +33,7 @@
                     <td><c:out value="${item.value.name}" /></td>
                     <td><c:out value="${item.value.text}" /></td>
                     <td><c:out value="${item.value.address}" /></td>
-                    <td><a href="<c:url value="/${item.value.id}/edit" />">edit</a></td>
+                    <td><a href="<c:url value="/item/${item.value.id}/edit" />">edit</a></td>
                 </tr>
             </c:forEach>
             </tbody>

@@ -9,7 +9,7 @@ import java.util.Objects;
  * @version 1.0
  */
 public class Accident {
-    private int id = 0;
+    private Integer id = 0;
     private String name;
     private String text;
     private String address;
