@@ -17,7 +17,7 @@
 <body>
 <div class="container pt-3">
     <div class="row">
-        <form action="<c:url value='/save' />" method='POST' style="width: 100%">
+        <form action="<c:url value='/item/save' />" method='POST' style="width: 100%">
             <input type="hidden" name="id" value="<c:out value="${item.id}" />" />
             <table class="table table-bordered">
                 <tr>

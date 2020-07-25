@@ -25,11 +25,19 @@ public class AccidentMem {
         accidents.put(4, new Accident(4, "Accident 4", "Description of Accident 4", "Address 4"));
     }
 
-    public void create(Accident accident) {
+    public void save(Accident accident) {
         if (accident.getId() == 0){
             accident.setId(newId());
         }
         accidents.put(accident.getId(), accident);
+    }
+
+    public void delete(int id) {
+        accidents.remove(id);
+    }
+
+    public void delete(Accident accident) {
+        accidents.remove(accident.getId());
     }
 
     public int newId(){

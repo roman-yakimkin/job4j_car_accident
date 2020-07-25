@@ -33,7 +33,7 @@
                     <td><c:out value="${item.value.name}" /></td>
                     <td><c:out value="${item.value.text}" /></td>
                     <td><c:out value="${item.value.address}" /></td>
-                    <td><a href="<c:url value="/item/${item.value.id}/edit" />">edit</a></td>
+                    <td><a href="<c:url value="/item/${item.value.id}/edit" />">edit</a>&nbsp;<a href="<c:url value="/item/${item.value.id}/delete" />">delete</a></td>
                 </tr>
             </c:forEach>
             </tbody>

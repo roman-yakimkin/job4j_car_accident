@@ -9,10 +9,19 @@ import java.util.Objects;
  * @version 1.0
  */
 public class Accident {
-    private Integer id = 0;
+    private int id = 0;
     private String name;
     private String text;
     private String address;
+
+    public Accident() {
+    }
+
+    public Accident(String name, String text, String address) {
+        this.name = name;
+        this.text = text;
+        this.address = address;
+    }
 
     public Accident(int id, String name, String text, String address) {
         this.id = id;
@@ -58,7 +67,7 @@ public class Accident {
         if (this == o) return true;
         if (!(o instanceof Accident)) return false;
         Accident accident = (Accident) o;
-        return id == accident.id;
+        return id == accident.getId();
     }
 
     @Override

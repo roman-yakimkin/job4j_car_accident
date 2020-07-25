@@ -31,17 +31,29 @@ public class AccidentControl {
         String path = "accident/edit";
         try {
             int accidentId = Integer.parseInt(id);
-            Accident accident = accidents.getAccident(1);
+            Accident accident = accidents.getAccident(accidentId);
             model.addAttribute("item", accident);
         } catch (NumberFormatException e) {
+            e.printStackTrace();
             path = "redirect:/";
         }
         return path;
     }
 
+    @GetMapping("/{id}/delete")
+    public String delete(@PathVariable String id) {
+        try {
+            int accidentId = Integer.parseInt(id);
+            accidents.delete(accidentId);
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
+        return "redirect:/";
+    }
+
     @PostMapping("/save")
     public String save(@ModelAttribute Accident accident) {
-        accidents.create(accident);
+        accidents.save(accident);
         return "redirect:/";
     }
 }
