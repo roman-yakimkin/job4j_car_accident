@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import ru.job4j.accident.model.Accident;
+import ru.job4j.accident.repository.AccidentJdbcTemplate;
 import ru.job4j.accident.repository.AccidentMem;
 
 import java.security.Key;
@@ -23,11 +24,11 @@ import java.util.Map;
 public class IndexControl {
 
     @Autowired
-    private AccidentMem accidentMem;
+    private AccidentJdbcTemplate accidents;
 
     @GetMapping("/")
     public String index(Model model) {
-        model.addAttribute("accidents", accidentMem.getAccidents());
+        model.addAttribute("accidents", accidents.getAll());
         return "index";
     }
 }
