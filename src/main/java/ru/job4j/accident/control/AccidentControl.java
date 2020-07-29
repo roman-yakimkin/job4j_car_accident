@@ -1,10 +1,11 @@
 package ru.job4j.accident.control;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ru.job4j.accident.model.Accident;
-import ru.job4j.accident.repository.AccidentMem;
+import ru.job4j.accident.repository.AccidentJdbcTemplate;
 
 /**
  * The accident controller class
@@ -15,9 +16,11 @@ import ru.job4j.accident.repository.AccidentMem;
 @Controller
 @RequestMapping("/item")
 public class AccidentControl {
-    private final AccidentMem accidents;
 
-    public AccidentControl(AccidentMem accidents) {
+    @Autowired
+    private final AccidentJdbcTemplate accidents;
+
+    public AccidentControl(AccidentJdbcTemplate accidents) {
         this.accidents = accidents;
     }
 

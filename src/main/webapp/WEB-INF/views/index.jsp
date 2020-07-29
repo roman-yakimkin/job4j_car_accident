@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
 <html>
 <head>
     <!-- Required meta tags -->
@@ -30,10 +30,10 @@
             <tbody>
             <c:forEach items="${accidents}" var="item">
                 <tr>
-                    <td><c:out value="${item.value.name}" /></td>
-                    <td><c:out value="${item.value.text}" /></td>
-                    <td><c:out value="${item.value.address}" /></td>
-                    <td><a href="<c:url value="/item/${item.value.id}/edit" />">edit</a>&nbsp;<a href="<c:url value="/item/${item.value.id}/delete" />">delete</a></td>
+                    <td><c:out value="${item.name}" /></td>
+                    <td><c:out value="${item.text}" /></td>
+                    <td><c:out value="${item.address}" /></td>
+                    <td><a href="<c:url value="/item/${item.id}/edit" />">edit</a>&nbsp;<a href="<c:url value="/item/${item.id}/delete" />">delete</a></td>
                 </tr>
             </c:forEach>
             </tbody>

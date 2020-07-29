@@ -21,9 +21,34 @@ public class AccidentJdbcTemplate {
     }
 
     public Accident save(Accident accident) {
-        jdbc.update("insert into accident (name, text, address) values (?, ?, ?)",
+        if (accident.getId() == 0) {
+            return insert(accident);
+        } else {
+            return update(accident);
+        }
+    }
+
+    private Accident insert(Accident accident) {
+        jdbc.update("insert into accident (name, text, address) values (?, ?, ?) ",
                 accident.getName(), accident.getText(), accident.getAddress());
         return accident;
+    }
+
+    private Accident update(Accident accident) {
+        jdbc.update("update accident set name = ?, text = ?, address = ? where id = ?",
+                accident.getName(), accident.getText(), accident.getAddress(), accident.getId());
+        return accident;
+    }
+
+    public Accident getAccident(int accidentId) {
+        return jdbc.queryForObject("select id, name, text, address from accident where id = ?",
+                (rs, row) -> {
+                    return new Accident(
+                            rs.getInt("id"),
+                            rs.getString("name"),
+                            rs.getString("text"),
+                            rs.getString("address"));
+                }, accidentId);
     }
 
     public List<Accident> getAll() {
@@ -36,5 +61,9 @@ public class AccidentJdbcTemplate {
                     accident.setAddress(rs.getString("address"));
                     return accident;
                 });
+    }
+
+    public void delete(int accidentId) {
+        jdbc.update("delete from accident where id = ?", accidentId);
     }
 }
