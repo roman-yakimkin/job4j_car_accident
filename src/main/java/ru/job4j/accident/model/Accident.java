@@ -1,5 +1,6 @@
 package ru.job4j.accident.model;
 
+import javax.persistence.*;
 import java.util.Objects;
 
 /**
@@ -8,7 +9,12 @@ import java.util.Objects;
  * @since 18.07.2020
  * @version 1.0
  */
+@Entity
+@Table(name="accident")
 public class Accident {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id = 0;
     private String name;
     private String text;
@@ -67,7 +73,7 @@ public class Accident {
         if (this == o) return true;
         if (!(o instanceof Accident)) return false;
         Accident accident = (Accident) o;
-        return id == accident.getId();
+        return id == accident.id;
     }
 
     @Override
