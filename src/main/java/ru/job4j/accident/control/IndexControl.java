@@ -19,6 +19,10 @@ public class IndexControl {
     @Autowired
     private AccidentHibernate accidents;
 
+    public IndexControl(AccidentHibernate accidents) {
+        this.accidents = accidents;
+    }
+
     @GetMapping("/")
     public String index(Model model) {
         model.addAttribute("accidents", accidents.getAll());

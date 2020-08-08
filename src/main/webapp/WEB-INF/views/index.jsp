@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <!-- Required meta tags -->
@@ -17,7 +17,7 @@
 <body>
 <div class="container">
     <div class="row pt-3">
-        <a href="<c:url value='/item/create'/>">Add an accident</a>
+        <a href="<c:url value='/accident/create'/>">Add an accident</a>
     </div>
     <div class="row pt-3">
         <table class="table table-bordered">
@@ -33,7 +33,7 @@
                     <td><c:out value="${item.name}" /></td>
                     <td><c:out value="${item.text}" /></td>
                     <td><c:out value="${item.address}" /></td>
-                    <td><a href="<c:url value="/item/${item.id}/edit" />">edit</a>&nbsp;<a href="<c:url value="/item/${item.id}/delete" />">delete</a></td>
+                    <td><a href="<c:url value="/accident/${item.id}/edit" />">edit</a>&nbsp;<a href="<c:url value="/accident/${item.id}/delete" />">delete</a></td>
                 </tr>
             </c:forEach>
             </tbody>

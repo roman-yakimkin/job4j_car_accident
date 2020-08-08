@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <!-- Required meta tags -->
@@ -17,12 +17,12 @@
 <body>
 <div class="container pt-3">
     <div class="row">
-        <form action="<c:url value='/item/save' />" method='POST' style="width: 100%">
-            <input type="hidden" name="id" value="<c:out value="${item.id}" />" />
+        <form action="<c:url value='/accident/save' />" method='POST' style="width: 100%">
+            <input type="hidden" name="id" value="${item.id}" />
             <table class="table table-bordered">
                 <tr>
                     <td>Name:</td>
-                    <td><input type='text' name='name' class="form-control" value="<c:out value="${item.name}" />"></td>
+                    <td><input type='text' name='name' class="form-control" value="${item.name}" /></td>
                 </tr>
                 <tr>
                     <td>Description:</td>

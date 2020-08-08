@@ -12,7 +12,6 @@ import java.util.List;
  * @since 26.07.2020
  * @version 1.0
  */
-@Repository
 public class AccidentJdbcTemplate {
     private final JdbcTemplate jdbc;
 

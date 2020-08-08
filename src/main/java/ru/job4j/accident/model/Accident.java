@@ -1,6 +1,5 @@
 package ru.job4j.accident.model;
 
-import javax.persistence.*;
 import java.util.Objects;
 
 /**
@@ -9,13 +8,8 @@ import java.util.Objects;
  * @since 18.07.2020
  * @version 1.0
  */
-@Entity
-@Table(name="accident")
 public class Accident {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id = 0;
+    private Integer id = 0;
     private String name;
     private String text;
     private String address;
@@ -29,18 +23,18 @@ public class Accident {
         this.address = address;
     }
 
-    public Accident(int id, String name, String text, String address) {
+    public Accident(Integer id, String name, String text, String address) {
         this.id = id;
         this.name = name;
         this.text = text;
         this.address = address;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -73,7 +67,7 @@ public class Accident {
         if (this == o) return true;
         if (!(o instanceof Accident)) return false;
         Accident accident = (Accident) o;
-        return id == accident.id;
+        return id.equals(accident.id);
     }
 
     @Override
