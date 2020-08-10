@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import ru.job4j.accident.repository.AccidentHibernate;
 import ru.job4j.accident.repository.AccidentJdbcTemplate;
+import ru.job4j.accident.repository.AccidentRepository;
 
 /**
  * The index controller class
@@ -16,16 +17,16 @@ import ru.job4j.accident.repository.AccidentJdbcTemplate;
 @Controller
 public class IndexControl {
 
-    @Autowired
-    private AccidentHibernate accidents;
+    private AccidentRepository accidentRepository;
 
-    public IndexControl(AccidentHibernate accidents) {
-        this.accidents = accidents;
+
+    public IndexControl(AccidentRepository accidentRepository) {
+        this.accidentRepository = accidentRepository;
     }
 
     @GetMapping("/")
     public String index(Model model) {
-        model.addAttribute("accidents", accidents.getAll());
+        model.addAttribute("accidents", accidentRepository.findAll());
         return "index";
     }
 }

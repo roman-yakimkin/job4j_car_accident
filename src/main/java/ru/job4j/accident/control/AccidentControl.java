@@ -7,6 +7,9 @@ import org.springframework.web.bind.annotation.*;
 import ru.job4j.accident.model.Accident;
 import ru.job4j.accident.repository.AccidentHibernate;
 import ru.job4j.accident.repository.AccidentJdbcTemplate;
+import ru.job4j.accident.repository.AccidentRepository;
+
+import java.util.Optional;
 
 /**
  * The accident controller class
@@ -18,10 +21,10 @@ import ru.job4j.accident.repository.AccidentJdbcTemplate;
 @RequestMapping("/accident")
 public class AccidentControl {
 
-    private final AccidentHibernate accidents;
+    private final AccidentRepository accidentRepository;
 
-    public AccidentControl(AccidentHibernate accidents) {
-        this.accidents = accidents;
+    public AccidentControl(AccidentRepository accidentRepository) {
+        this.accidentRepository = accidentRepository;
     }
 
     @GetMapping("/create")
@@ -34,9 +37,12 @@ public class AccidentControl {
         String path = "accident/edit";
         try {
             int accidentId = Integer.parseInt(id);
-            Accident accident = accidents.getAccident(accidentId);
-            model.addAttribute("item", accident);
-        } catch (NumberFormatException e) {
+            Optional<Accident> accident = accidentRepository.findById(accidentId);
+            if (accident.isEmpty()) {
+                throw new NullPointerException("Can't find an accident with this id");
+            }
+            model.addAttribute("item", accident.get());
+        } catch (Exception e) {
             e.printStackTrace();
             path = "redirect:/";
         }
@@ -47,7 +53,7 @@ public class AccidentControl {
     public String delete(@PathVariable String id) {
         try {
             int accidentId = Integer.parseInt(id);
-            accidents.delete(accidentId);
+            accidentRepository.deleteById(accidentId);
         } catch (NumberFormatException e) {
             e.printStackTrace();
         }
@@ -56,7 +62,7 @@ public class AccidentControl {
 
     @PostMapping("/save")
     public String save(@ModelAttribute Accident accident) {
-        accidents.save(accident);
+        accidentRepository.save(accident);
         return "redirect:/";
     }
 }
