@@ -1,5 +1,7 @@
 package ru.job4j.accident.control;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,8 +22,8 @@ import java.util.Optional;
 @Controller
 @RequestMapping("/accident")
 public class AccidentControl {
-
     private final AccidentRepository accidentRepository;
+    private static final Logger logger = LoggerFactory.getLogger(AccidentControl.class);
 
     public AccidentControl(AccidentRepository accidentRepository) {
         this.accidentRepository = accidentRepository;
@@ -43,6 +45,7 @@ public class AccidentControl {
             }
             model.addAttribute("item", accident.get());
         } catch (Exception e) {
+            logger.debug(e.getMessage());
             e.printStackTrace();
             path = "redirect:/";
         }
@@ -55,6 +58,7 @@ public class AccidentControl {
             int accidentId = Integer.parseInt(id);
             accidentRepository.deleteById(accidentId);
         } catch (NumberFormatException e) {
+            logger.debug(e.getMessage());
             e.printStackTrace();
         }
         return "redirect:/";
