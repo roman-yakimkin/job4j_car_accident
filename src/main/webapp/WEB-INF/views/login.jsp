@@ -4,10 +4,10 @@
 <body>
 <c:if test="${not empty errMsg}">
     <div style="color:red; font-weight: bold; margin: 30px 0px;">
-        ${errorMessage}
+        ${errMsg}
     </div>
 </c:if>
-<form name='login' action="<c:url value='/login'/>" method='POST'>
+<form name='login' action="<c:url value="/j_spring_security_check" />" method='POST'>
     <table>
         <tr>
             <td>UserName:</td>
