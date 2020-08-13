@@ -17,6 +17,10 @@
 <body>
 <div class="container">
     <div class="row pt-3">
+        <div>Logged in as: ${user.username}</div>
+        <div></div>
+    </div>
+    <div class="row pt-3">
         <a href="<c:url value='/accident/create'/>">Add an accident</a>
     </div>
     <div class="row pt-3">
