@@ -32,7 +32,14 @@
         <user name="user" password="123456" authorities="ROLE_USER" />
     </user-service>
 
-    <jdbc-user-service id="jdbcUserService" data-source-ref="dataSource" />
+    <jdbc-user-service id="jdbcUserService" data-source-ref="dataSource"
+                       users-by-username-query="select username, password, enabled
+                                                from users
+                                                where username = ?"
+                       authorities-by-username-query="select u.username, a.authority
+                                                      from authorities a, users u
+                                                      where u.username = ? and u.authority_id = a.id"
+    />
 
     <authentication-manager>
         <authentication-provider user-service-ref="jdbcUserService">
