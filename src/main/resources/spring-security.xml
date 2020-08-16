@@ -6,7 +6,8 @@
 	http://www.springframework.org/schema/security
 	http://www.springframework.org/schema/security/spring-security-5.2.xsd">
 
-    <beans:bean id="passwordEncoder" class="org.springframework.security.crypto.password.NoOpPasswordEncoder" />
+<!--    <beans:bean id="passwordEncoder" class="org.springframework.security.crypto.password.NoOpPasswordEncoder" />-->
+    <beans:bean id="passwordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
 
     <http auto-config="false" use-expressions="true">
         <form-login login-page="/login"
@@ -23,14 +24,14 @@
         <csrf disabled="true" />
 
         <intercept-url pattern="/login" access="permitAll()" />
+        <intercept-url pattern="/reg" access="permitAll()" />
         <intercept-url pattern="/**" access="hasAnyRole('USER,ADMIN')" />
-
     </http>
 
-    <user-service id="userService">
-        <user name="admin" password="123456" authorities="ROLE_USER,ROLE_ADMIN" />
-        <user name="user" password="123456" authorities="ROLE_USER" />
-    </user-service>
+<!--    <user-service id="userService">-->
+<!--        <user name="admin" password="123456" authorities="ROLE_USER,ROLE_ADMIN" />-->
+<!--        <user name="user" password="123456" authorities="ROLE_USER" />-->
+<!--    </user-service>-->
 
     <jdbc-user-service id="jdbcUserService" data-source-ref="dataSource"
                        users-by-username-query="select username, password, enabled

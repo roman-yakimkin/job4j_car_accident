@@ -2,15 +2,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <body>
-<c:if test="${not empty errMsg}">
-    <div style="color:red; font-weight: bold; margin: 30px 0px;">
-        ${errMsg}
-    </div>
-</c:if>
-<div>
-    <a href="<c:url value="/reg"/>">Register</a>
-</div>
-<form name='login' action="<c:url value="/j_spring_security_check" />" method='POST'>
+<h3>Registration of a new user</h3>
+<form name='login' action="<c:url value='/reg'/>" method='POST'>
     <table>
         <tr>
             <td>UserName:</td>
@@ -24,7 +17,6 @@
             <td colspan='2'><input name="submit" type="submit" value="submit" /></td>
         </tr>
     </table>
-    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 </form>
 </body>
 </html>

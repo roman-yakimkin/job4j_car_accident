@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="ru.job4j.accident.model.User" table="users" catalog="public">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="username" type="java.lang.String">
+            <column name="username" />
+        </property>
+        <property name="password" type="java.lang.String">
+            <column name="password" />
+        </property>
+        <property name="enabled" type="boolean">
+            <column name="enabled" />
+        </property>
+        <many-to-one name="authority" class="ru.job4j.accident.model.Authority" lazy="false" fetch="select">
+            <column name="authority_id" not-null="false" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

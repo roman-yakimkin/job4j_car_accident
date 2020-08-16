@@ -28,6 +28,8 @@
         <property name="mappingResources">
             <list>
                 <value>Accident.hbm.xml</value>
+                <value>Authority.hbm.xml</value>
+                <value>User.hbm.xml</value>
             </list>
         </property>
         <property name="persistenceUnitName" value="jpaData" />
